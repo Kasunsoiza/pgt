@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+<!--
+  europin.org â€” Template: BERLIN
+  Style: German Lebenslauf â€” two-column, photo sidebar, navy/gold
+  Print: A4, 210Ã—297mm. Use browser Print > Save as PDF.
+  ATS:   Text is fully selectable. No image-based text.
+  GDPR:  No external tracking. Google Fonts loaded via @import.
+-->
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Berlin â€” German Lebenslauf Template | europin.org</title>
+  <meta name="description" content="Professional German Lebenslauf CV template. ATS-optimized, print-ready A4. Free from europin.org"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+    /* â”€â”€ Reset & base â”€â”€ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 10pt; }
+
+    /* â”€â”€ Page shell â”€â”€ */
+    body {
+      background: #e8e4dd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 4rem;
+      font-family: 'Jost', 'Helvetica Neue', sans-serif;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* â”€â”€ Toolbar (hidden when printing) â”€â”€ */
+    .toolbar {
+      width: 210mm;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding: 0 0.25rem;
+    }
+    .toolbar-brand { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #555; letter-spacing: 0.05em; }
+    .toolbar-brand span { color: #c9a84c; }
+    .btn-dl {
+      background: #1a1a2e;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 0.4rem;
+      transition: background 0.2s;
+    }
+    .btn-dl:hover { background: #c9a84c; color: #1a1a2e; }
+
+    /* â”€â”€ A4 Paper â”€â”€ */
+    .cv-paper {
+      width: 210mm;
+      min-height: 297mm;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 68mm 1fr;
+      box-shadow: 0 12px 60px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* â”€â”€ LEFT SIDEBAR â”€â”€ */
+    .sidebar {
+      background: #1a1a2e;
+      padding: 10mm 7mm 10mm 7mm;
+      display: flex;
+      flex-direction: column;
+      gap: 7mm;
+      color: #e8e4dd;
+    }
+
+    /* Photo circle */
+    .photo-wrap {
+      display: flex;
+      justify-content: center;
+      padding-top: 4mm;
+    }
+    .photo-circle {
+      width: 36mm;
+      height: 36mm;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #2d2d50, #3a3a6b);
+      border: 2.5pt solid #c9a84c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .photo-circle svg { width: 22mm; height: 22mm; opacity: 0.4; }
+
+    /* Sidebar section label */
+    .sb-label {
+      font-size: 6.5pt;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      border-bottom: 0.5pt solid rgba(201,168,76,0.3);
+      padding-bottom: 1.5mm;
+      margin-bottom: 2.5mm;
+    }
+
+    /* Contact items */
+    .contact-list { display: flex; flex-direction: column; gap: 2mm; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 2mm;
+      font-size: 7.5pt;
+      line-height: 1.4;
+      color: #c8c5be;
+    }
+    .contact-icon { color: #c9a84c; font-size: 7pt; margin-top: 0.5pt; flex-shrink: 0; }
+
+    /* Skills bars */
+    .skill-item { margin-bottom: 2.5mm; }
+    .skill-name { font-size: 7.5pt; color: #c8c5be; margin-bottom: 1mm; display: flex; justify-content: space-between; }
+    .skill-bar { height: 1.5mm; background: rgba(255,255,255,0.1); border-radius: 1mm; overflow: hidden; }
+    .skill-fill { height: 100%; background: linear-gradient(90deg, #c9a84c, #e2c47a); border-radius: 1mm; }
+
+    /* Language dots */
+    .lang-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2mm; }
+    .lang-name { font-size: 7.5pt; color: #c8c5be; }
+    .lang-dots { display: flex; gap: 1mm; }
+    .dot { width: 2.5mm; height: 2.5mm; border-radius: 50%; background: rgba(255,255,255,0.15); }
+    .dot.filled { background: #c9a84c; }
+
+    /* Sidebar text */
+    .sb-text { font-size: 7.5pt; color: #c8c5be; line-height: 1.6; }
+
+    /* â”€â”€ RIGHT MAIN â”€â”€ */
+    .main {
+      padding: 10mm 9mm 10mm 8mm;
+      display: flex;
+      flex-direction: column;
+      gap: 6mm;
+    }
+
+    /* Name block */
+    .name-block { border-bottom: 0.5pt solid #e0dbd0; padding-bottom: 5mm; }
+    .cv-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26pt;
+      font-weight: 700;
+      color: #1a1a2e;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .cv-jobtitle {
+      font-size: 10pt;
+      font-weight: 300;
+      color: #888;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 1.5mm;
+    }
+    .cv-jobtitle span { color: #c9a84c; margin: 0 1mm; }
+
+    /* Section headers */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+      margin-bottom: 3.5mm;
+    }
+    .section-head-line {
+      width: 3mm;
+      height: 3mm;
+      background: #c9a84c;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 7pt;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #1a1a2e;
+    }
+    .section-rule { flex: 1; height: 0.5pt; background: #e0dbd0; }
+
+    /* Profile text */
+    .profile-text { font-size: 8.5pt; color: #444; line-height: 1.75; }
+
+    /* Experience entry */
+    .exp-entry { display: grid; grid-template-columns: 22mm 1fr; gap: 3mm; margin-bottom: 4.5mm; }
+    .exp-entry:last-child { margin-bottom: 0; }
+    .exp-date {
+      font-size: 7pt;
+      color: #c9a84c;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+      text-align: right;
+      padding-top: 0.5mm;
+    }
+    .exp-content { border-left: 1pt solid #e0dbd0; padding-left: 3.5mm; }
+    .exp-title { font-size: 9pt; font-weight: 600; color: #1a1a2e; }
+    .exp-org { font-size: 7.5pt; color: #888; margin: 0.5mm 0 1.5mm; font-style: italic; }
+    .exp-desc { font-size: 7.5pt; color: #555; line-height: 1.65; }
+    .exp-desc li { margin-left: 3mm; margin-bottom: 0.5mm; list-style: none; position: relative; }
+    .exp-desc li::before { content: 'â€“'; position: absolute; left: -3mm; color: #c9a84c; }
+
+    /* Education */
+    .edu-entry { display: grid; grid-template-columns: 22mm 1fr; gap: 3mm; margin-bottom: 3mm; }
+    .edu-date { font-size: 7pt; color: #c9a84c; font-weight: 600; text-align: right; line-height: 1.4; padding-top: 0.5mm; }
+    .edu-content { border-left: 1pt solid #e0dbd0; padding-left: 3.5mm; }
+    .edu-degree { font-size: 9pt; font-weight: 600; color: #1a1a2e; }
+    .edu-school { font-size: 7.5pt; color: #888; font-style: italic; margin-top: 0.5mm; }
+    .edu-note { font-size: 7pt; color: #aaa; margin-top: 0.5mm; }
+
+    /* Gold accent corner */
+    .gold-corner {
+      position: absolute;
+      top: 0; right: 0;
+      width: 0; height: 0;
+      border-top: 12mm solid #c9a84c;
+      border-left: 12mm solid transparent;
+    }
+
+    /* â”€â”€ PRINT â”€â”€ */
+    @media print {
+      body { background: none; padding: 0; }
+      .toolbar { display: none; }
+      .cv-paper { box-shadow: none; }
+      @page { size: A4; margin: 0; }
+    }
+
+    @media (max-width: 240mm) {
+      .cv-paper { width: 100%; grid-template-columns: 1fr; }
+      .sidebar { padding: 6mm; }
+      .main { padding: 6mm; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-brand">europin<span>.click</span> â€” Berlin Template</div>
+    <button class="btn-dl" onclick="window.print()">â¬‡ Save as PDF</button>
+  </div>
+
+  <!-- A4 CV Paper -->
+  <div class="cv-paper">
+
+    <!-- Gold corner accent -->
+    <div class="gold-corner" aria-hidden="true"></div>
+
+    <!-- â•â• LEFT SIDEBAR â•â• -->
+    <aside class="sidebar">
+
+      <!-- Photo -->
+      <div class="photo-wrap">
+        <div class="photo-circle" aria-label="Profile photo placeholder">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="38" r="22" fill="#c9a84c" opacity="0.5"/>
+            <ellipse cx="50" cy="90" rx="38" ry="28" fill="#c9a84c" opacity="0.4"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div class="sb-label">Kontakt</div>
+        <div class="contact-list">
+          <div class="contact-item"><span class="contact-icon">âœ‰</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="315d445842501f5754435f505f55544b71545c50585d1f525e5c">[email&#160;protected]</a></span></div>
+          <div class="contact-item"><span class="contact-icon">âœ†</span><span>+49 171 234 5678</span></div>
+          <div class="contact-item"><span class="contact-icon">âŒ‚</span><span>MusterstraÃŸe 12<br/>10115 Berlin, Deutschland</span></div>
+          <div class="contact-item"><span class="contact-icon">in</span><span>linkedin.com/in/luisafernandez</span></div>
+        </div>
+      </div>
+
+      <!-- PersÃ¶nliche Daten -->
+      <div>
+        <div class="sb-label">PersÃ¶nliche Daten</div>
+        <div class="contact-list">
+          <div class="contact-item"><span class="contact-icon">â—ˆ</span><span>Geburtsdatum:<br/>12. MÃ¤rz 1990</span></div>
+          <div class="contact-item"><span class="contact-icon">â—ˆ</span><span>Geburtsort:<br/>Madrid, Spanien</span></div>
+          <div class="contact-item"><span class="contact-icon">â—ˆ</span><span>StaatsangehÃ¶rigkeit:<br/>Spanisch / EU-BÃ¼rger</span></div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div>
+        <div class="sb-label">Kenntnisse</div>
+        <div class="skill-item"><div class="skill-name"><span>Produktmanagement</span><span style="color:#c9a84c">â—â—â—â—â—</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Datenanalyse</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Agile / Scrum</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>SQL / Python</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Jira / Confluence</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-name"><span>Figma</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+      </div>
+
+      <!-- Sprachen -->
+      <div>
+        <div class="sb-label">Sprachen</div>
+        <div class="lang-item"><span class="lang-name">Deutsch</span><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="lang-item"><span class="lang-name">Englisch</span><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="lang-item"><span class="lang-name">Spanisch</span><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="lang-item"><span class="lang-name">FranzÃ¶sisch</span><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+      </div>
+
+      <!-- Interessen -->
+      <div>
+        <div class="sb-label">Interessen</div>
+        <p class="sb-text">Produktinnovation Â· UX-Forschung Â· Nachhaltigkeit Â· Bergsteigen Â· Klassische Musik</p>
+      </div>
+
+    </aside>
+
+    <!-- â•â• MAIN CONTENT â•â• -->
+    <main class="main">
+
+      <!-- Name -->
+      <div class="name-block">
+        <div class="cv-name">Luisa FernÃ¡ndez</div>
+        <div class="cv-jobtitle">Senior Product Manager<span>Â·</span>Digital Innovation</div>
+      </div>
+
+      <!-- Profil -->
+      <section aria-labelledby="s-profil">
+        <div class="section-head">
+          <div class="section-head-line"></div>
+          <div class="section-title" id="s-profil">Profil</div>
+          <div class="section-rule"></div>
+        </div>
+        <p class="profile-text">Erfahrene Produktmanagerin mit Ã¼ber 8 Jahren Expertise in der Entwicklung digitaler Produkte im europÃ¤ischen Markt. Nachgewiesene Erfolge bei der Skalierung von Produkten von 0 auf 500.000 aktive Nutzer. Spezialisiert auf datengetriebene Entscheidungsfindung, agile Methoden und cross-funktionale TeamfÃ¼hrung in internationalen Umgebungen.</p>
+      </section>
+
+      <!-- Berufserfahrung -->
+      <section aria-labelledby="s-beruf">
+        <div class="section-head">
+          <div class="section-head-line"></div>
+          <div class="section-title" id="s-beruf">Berufserfahrung</div>
+          <div class="section-rule"></div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-date">03/2021<br/>â€” Heute</div>
+          <div class="exp-content">
+            <div class="exp-title">Senior Product Manager</div>
+            <div class="exp-org">Zalando SE Â· Berlin</div>
+            <ul class="exp-desc">
+              <li>Verantwortlich fÃ¼r die Produktvision und -strategie des Checkout-Bereichs (â‚¬2,4 Mrd. GMV)</li>
+              <li>Steigerung der Conversion Rate um 18% durch A/B-Tests und UX-Optimierungen</li>
+              <li>FÃ¼hrung eines cross-funktionalen Teams von 12 Ingenieuren, Designern und Analysten</li>
+              <li>EinfÃ¼hrung OKR-Frameworks, das teamÃ¼bergreifend in 4 Produktbereichen Ã¼bernommen wurde</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-date">06/2018<br/>â€” 02/2021</div>
+          <div class="exp-content">
+            <div class="exp-title">Product Manager</div>
+            <div class="exp-org">N26 GmbH Â· Berlin</div>
+            <ul class="exp-desc">
+              <li>Aufbau und Launch der Spar-Produktlinie in 5 europÃ¤ischen MÃ¤rkten</li>
+              <li>Koordination mit Compliance-, Engineering- und Marketing-Teams zur DSGVO-KonformitÃ¤t</li>
+              <li>Wachstum der Nutzerbasis um 340% innerhalb von 18 Monaten</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-date">09/2015<br/>â€” 05/2018</div>
+          <div class="exp-content">
+            <div class="exp-title">Junior Product Manager</div>
+            <div class="exp-org">Siemens AG Â· MÃ¼nchen</div>
+            <ul class="exp-desc">
+              <li>UnterstÃ¼tzung bei der Entwicklung einer IoT-Plattform fÃ¼r Industriekunden</li>
+              <li>DurchfÃ¼hrung von Markt- und Wettbewerbsanalysen fÃ¼r 12 Produktbereiche</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ausbildung -->
+      <section aria-labelledby="s-edu">
+        <div class="section-head">
+          <div class="section-head-line"></div>
+          <div class="section-title" id="s-edu">Ausbildung</div>
+          <div class="section-rule"></div>
+        </div>
+
+        <div class="edu-entry">
+          <div class="edu-date">2013 â€“ 2015</div>
+          <div class="edu-content">
+            <div class="edu-degree">M.Sc. Wirtschaftsinformatik</div>
+            <div class="edu-school">Technische UniversitÃ¤t MÃ¼nchen</div>
+            <div class="edu-note">Abschlussnote: 1,4 (sehr gut) Â· Schwerpunkt: Digital Product Management</div>
+          </div>
+        </div>
+
+        <div class="edu-entry">
+          <div class="edu-date">2010 â€“ 2013</div>
+          <div class="edu-content">
+            <div class="edu-degree">B.Sc. Betriebswirtschaftslehre</div>
+            <div class="edu-school">Universidad Complutense de Madrid</div>
+            <div class="edu-note">Abschlussnote: Sobresaliente (entspricht 1,5)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Zertifikate -->
+      <section aria-labelledby="s-cert">
+        <div class="section-head">
+          <div class="section-head-line"></div>
+          <div class="section-title" id="s-cert">Zertifikate & Weiterbildungen</div>
+          <div class="section-rule"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5mm 4mm;">
+          <div style="font-size:7.5pt;color:#555;">Certified Scrum Product Owner (CSPO) <span style="color:#aaa">Â· 2022</span></div>
+          <div style="font-size:7.5pt;color:#555;">Google Analytics Certification <span style="color:#aaa">Â· 2021</span></div>
+          <div style="font-size:7.5pt;color:#555;">AWS Cloud Practitioner <span style="color:#aaa">Â· 2020</span></div>
+          <div style="font-size:7.5pt;color:#555;">Product-Led Growth (Reforge) <span style="color:#aaa">Â· 2023</span></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Instructions below paper -->
+  <p style="margin-top:1.5rem;font-size:0.78rem;color:#888;text-align:center;">
+    Press <strong>Save as PDF</stron

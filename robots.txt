@@ -1,0 +1,31 @@
+# ============================================================
+# europin.org — robots.txt
+# ============================================================
+
+User-agent: *
+
+# Allow all public content pages
+Allow: /
+Allow: /templates.html
+Allow: /features.html
+Allow: /blog.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /privacy.html
+Allow: /terms.html
+
+# Allow all blog articles (01.html … 1000.html)
+Allow: /blog/
+
+# Block functional/app pages — no SEO value
+Disallow: /builder/
+Disallow: /templates/
+Disallow: /account/
+Disallow: /api/
+Disallow: /*.json$
+
+# Block the article template (not a real article)
+Disallow: /blog/ARTICLE_TEMPLATE.html
+
+# Sitemap location
+Sitemap: https://europin.org/sitemap.xml
