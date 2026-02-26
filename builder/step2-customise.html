@@ -211,6 +211,9 @@ html,body{height:100%;overflow:hidden;font-family:'Jost',sans-serif;background:v
   .cv-berlin .sh,.cv-paris .st,.cv-london .st,.cv-ats .ast{
     break-after:avoid;page-break-after:avoid;
   }
+  .cv-berlin section,.cv-paris section,.cv-london section,.cv-ats section{
+    break-inside:avoid;page-break-inside:avoid;
+  }
 }
 
 /* ═══════════════════════════════════════════════════
@@ -969,6 +972,7 @@ function buildPrintHTML(){
     '.cv-paris .pm{flex:1;padding:8mm 8mm 8mm 12mm;box-sizing:border-box}',
     '.cv-berlin .ee,.cv-berlin .edue,.cv-paris .xe,.cv-paris .edue,.cv-london .xe,.cv-london .edue,.cv-ats .aee,.cv-ats .aedu{break-inside:avoid;page-break-inside:avoid}',
     '.cv-berlin .sh,.cv-paris .st,.cv-london .st,.cv-ats .ast{break-after:avoid;page-break-after:avoid}',
+    '.cv-berlin section,.cv-paris section,.cv-london section,.cv-ats section{break-inside:avoid;page-break-inside:avoid}',
     '</style></head><body>',cvHtml,
     '<script>document.querySelectorAll(".cvn").forEach(function(e){e.style.fontFamily="\''+hf+'\',serif,sans-serif";});',
     (lsrc?'var li=document.createElement("img");li.src="'+lsrc+'";li.alt="europin.org";li.style.cssText="position:absolute;top:6mm;right:6mm;width:26mm;height:auto;z-index:999;pointer-events:none;display:block";var cv=document.querySelector(".cv-berlin,.cv-paris,.cv-london,.cv-ats");if(cv){cv.style.position="relative";cv.appendChild(li);}':''),
