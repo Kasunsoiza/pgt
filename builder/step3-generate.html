@@ -345,6 +345,9 @@
   .cv-berlin .sh,.cv-paris .st,.cv-london .st,.cv-ats .ast{
     break-after:avoid;page-break-after:avoid;
   }
+  .cv-berlin section,.cv-paris section,.cv-london section,.cv-ats section{
+    break-inside:avoid;page-break-inside:avoid;
+  }
 }
 
     /* PRINT */
@@ -917,6 +920,7 @@ function downloadCV(btn){
     '.cv-paris .pm{flex:1;padding:8mm 8mm 8mm 12mm;box-sizing:border-box}',
     '.cv-berlin .ee,.cv-berlin .edue,.cv-paris .xe,.cv-paris .edue,.cv-london .xe,.cv-london .edue,.cv-ats .aee,.cv-ats .aedu{break-inside:avoid;page-break-inside:avoid}',
     '.cv-berlin .sh,.cv-paris .st,.cv-london .st,.cv-ats .ast{break-after:avoid;page-break-after:avoid}',
+    '.cv-berlin section,.cv-paris section,.cv-london section,.cv-ats section{break-inside:avoid;page-break-inside:avoid}',
     '</style></head><body style="position:relative">',
     cvHtml,
     logoHtml,
