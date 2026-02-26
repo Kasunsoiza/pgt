@@ -261,10 +261,11 @@
     .profil-text { font-size: 8.5pt; color: #444; line-height: 1.8; font-style: italic; }
 
     @media print {
-      body { background: none; padding: 0; }
+      body { background: none; padding: 0; display: block; }
       .toolbar { display: none; }
-      .cv-paper { box-shadow: none; }
-      @page { size: A4; margin: 0; }
+      .cv-paper { box-shadow: none; min-height: auto; width: auto; }
+      @page { size: A4; margin: 3cm 0 3cm 0; }
+      @page:first { margin-top: 0; margin-bottom: 3cm; }
     }
     @media (max-width: 240mm) {
       .cv-paper { width: 100%; }
