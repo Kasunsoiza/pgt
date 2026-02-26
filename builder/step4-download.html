@@ -347,9 +347,6 @@
   .cv-berlin .sh,.cv-paris .st,.cv-london .st,.cv-ats .ast{
     break-after:avoid;page-break-after:avoid;
   }
-  .cv-berlin section,.cv-paris section,.cv-london section,.cv-ats section{
-    break-inside:avoid;page-break-inside:avoid;
-  }
 }
 
     /* PRINT */
@@ -896,22 +893,22 @@ function buildPrintHTML(){
     '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">',
     '<style>',
     '*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}',
-    '@page{margin:15mm 0;size:210mm 297mm portrait}',
+    '@page{margin:0;size:210mm 297mm portrait}',
     'html,body{margin:0;padding:0;width:210mm;min-width:210mm;max-width:210mm;background:#fff;overflow-x:hidden}',
     cvCss,
     '*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}',
     '.cv-berlin,.cv-paris,.cv-london,.cv-ats{width:210mm!important;min-width:210mm!important;max-width:210mm!important;box-shadow:none!important}',
-    '.cv-berlin{display:block!important;min-height:0!important;position:relative;background:linear-gradient(to right,var(--ad,#1a1a2e) 68mm,#fff 68mm)!important}',
-    '.cv-berlin .csb{position:absolute;top:0;left:0;width:68mm;min-height:100%;background:transparent;padding:10mm 7mm;box-sizing:border-box;color:#e8e4dd}',
+    /* Berlin: fixed sidebar repeats on every printed page */
+    '.cv-berlin{display:block!important;min-height:0!important;position:relative}',
+    '.cv-berlin .csb{position:fixed;top:0;left:0;width:68mm;min-height:100%;background:var(--ad,#1a1a2e);padding:10mm 7mm;box-sizing:border-box}',
     '.cv-berlin .cmain{margin-left:68mm;padding:10mm 9mm 10mm 8mm;display:block}',
-    '.cv-paris{display:block!important;min-height:0!important;position:relative;background:linear-gradient(to left,#f8f5f0 62mm,#fff 62mm)!important}',
-    '.cv-paris .pb{display:flex!important;flex-direction:row;align-items:flex-start}',
-    '.cv-paris .pa{position:absolute;top:68mm;right:0;width:62mm;min-height:calc(100% - 68mm);padding:8mm 8mm 8mm 6mm;background:transparent;box-sizing:border-box;border-left:1px solid #e8e3da}',
-    '.cv-paris .pm{flex:1;padding:8mm 8mm 8mm 12mm;box-sizing:border-box}',
+    /* Paris: fixed right sidebar repeats on every printed page */
+    '.cv-paris .pb{display:block!important}',
+    '.cv-paris .pa{position:fixed;top:68mm;right:0;width:62mm;padding:8mm 8mm 8mm 6mm;background:#f8f5f0;box-sizing:border-box}',
+    '.cv-paris .pm{display:block;padding:0 8mm 8mm 8mm}',
     /* Break rules */
     '.cv-berlin .ee,.cv-berlin .edue,.cv-paris .xe,.cv-paris .edue,.cv-london .xe,.cv-london .edue,.cv-ats .aee,.cv-ats .aedu{break-inside:avoid;page-break-inside:avoid}',
     '.cv-berlin .sh,.cv-paris .st,.cv-london .st,.cv-ats .ast{break-after:avoid;page-break-after:avoid}',
-    '.cv-berlin section,.cv-paris section,.cv-london section,.cv-ats section{break-inside:avoid;page-break-inside:avoid}',
     '</style></head>',
     '<body>',
     cvHtml,
@@ -1018,18 +1015,14 @@ async function downloadCV_fallback(btn,fname,restore){
     var pdf=new jsPDF({orientation:'portrait',unit:'mm',format:'a4',compress:true});
     var canvasW=canvas.width,canvasH=canvas.height;
     var pageHeightPx=Math.round(A4_H*SCALE);
-    var marginMm=15,marginPx=Math.round((marginMm/297)*pageHeightPx);
-    var contentHeightPx=pageHeightPx-(marginPx*2);
-    var pagesCount=Math.ceil(canvasH/contentHeightPx),isFirst=true;
+    var pagesCount=Math.ceil(canvasH/pageHeightPx),isFirst=true;
 
     for(var p=0;p<pagesCount;p++){
       if(!isFirst)pdf.addPage();isFirst=false;
-      var srcY=p*contentHeightPx,srcH=Math.min(contentHeightPx,canvasH-srcY);
-      var pc=document.createElement('canvas');pc.width=canvasW;pc.height=pageHeightPx;
-      var ctx=pc.getContext('2d');
-      ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvasW,pageHeightPx);
-      ctx.drawImage(canvas,0,srcY,canvasW,srcH,0,marginPx,canvasW,srcH);
-      var imgHmm=(pageHeightPx/canvasW)*210;
+      var srcY=p*pageHeightPx,srcH=Math.min(pageHeightPx,canvasH-srcY);
+      var pc=document.createElement('canvas');pc.width=canvasW;pc.height=srcH;
+      pc.getContext('2d').drawImage(canvas,0,srcY,canvasW,srcH,0,0,canvasW,srcH);
+      var imgHmm=(srcH/canvasW)*210;
       pdf.addImage(pc.toDataURL('image/jpeg',0.97),'JPEG',0,0,210,imgHmm,undefined,'FAST');
     }
     pdf.save(fname||getFileName());
