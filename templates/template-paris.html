@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
-<!--
-  europin.org â€” Template: PARIS
-  Style: French CV â€” two-column header, photo, terracotta accent, editorial serif
-  Print: A4, 210Ã—297mm. Use browser Print > Save as PDF.
-  ATS:   Fully selectable text.
-  Note:  French CV norm: photo common, personal info section standard.
--->
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paris â€” French CV Template | europin.org</title>
-  <meta name="description" content="Professional French CV template. ATS-optimized, print-ready A4. Elegant two-column layout. Free from europin.org"/>
+  <title>Paris — French CV Template | europin.org</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap');
 
@@ -36,7 +28,6 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1rem;
-      padding: 0 0.25rem;
     }
     .toolbar-brand { font-family: 'Playfair Display', serif; font-size: 1rem; color: #777; }
     .toolbar-brand span { color: #b85c38; }
@@ -46,32 +37,27 @@
       border: none;
       padding: 0.5rem 1.25rem;
       border-radius: 3px;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
       cursor: pointer;
-      display: flex; align-items: center; gap: 0.4rem;
-      transition: background 0.2s;
     }
-    .btn-dl:hover { background: #9a4a2c; }
 
-    /* â”€â”€ A4 Paper â”€â”€ */
+    /* —— A4 Paper —— */
     .cv-paper {
       width: 210mm;
       min-height: 297mm;
       background: #faf7f2;
       box-shadow: 0 12px 60px rgba(0,0,0,0.2);
-      overflow: hidden;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
-    /* â”€â”€ HEADER BANNER â”€â”€ */
+    /* —— HEADER BANNER —— */
     .cv-header {
       background: #2c2420;
-      padding: 9mm 11mm 9mm 11mm;
+      /* UPDATED: 15mm (1.5cm) Top Padding */
+      padding: 15mm 11mm 9mm 11mm;
       display: grid;
       grid-template-columns: 32mm 1fr;
       gap: 7mm;
@@ -93,179 +79,81 @@
     }
 
     .photo-box {
-      width: 30mm;
-      height: 30mm;
-      border-radius: 2mm;
+      width: 30mm; height: 30mm; border-radius: 2mm;
       background: linear-gradient(145deg, #3d302a, #523d35);
       border: 1.5pt solid #b85c38;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
     }
     .photo-box svg { width: 18mm; height: 18mm; opacity: 0.4; }
 
     .header-text { position: relative; z-index: 1; }
-    .cv-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 22pt;
-      font-weight: 700;
-      color: #faf7f2;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-    }
-    .cv-role {
-      font-size: 9pt;
-      color: #b85c38;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-top: 1.5mm;
-    }
-    .cv-tagline {
-      font-size: 8.5pt;
-      color: rgba(250,247,242,0.65);
-      font-style: italic;
-      margin-top: 2mm;
-      line-height: 1.5;
-    }
+    .cv-name { font-family: 'Playfair Display', serif; font-size: 22pt; font-weight: 700; color: #faf7f2; line-height: 1.1; }
+    .cv-role { font-size: 9pt; color: #b85c38; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 1.5mm; }
+    .cv-tagline { font-size: 8.5pt; color: rgba(250,247,242,0.65); font-style: italic; margin-top: 2mm; }
 
-    /* Contact bar */
-    .contact-bar {
-      background: #b85c38;
-      padding: 2.5mm 11mm;
-      display: flex;
-      gap: 6mm;
-      flex-wrap: wrap;
-    }
-    .contact-bar-item {
-      font-size: 7.5pt;
-      color: #faf7f2;
-      display: flex;
-      align-items: center;
-      gap: 1.5mm;
-    }
-    .contact-bar-item .icon { opacity: 0.7; font-size: 7pt; }
+    .contact-bar { background: #b85c38; padding: 2.5mm 11mm; display: flex; gap: 6mm; flex-wrap: wrap; }
+    .contact-bar-item { font-size: 7.5pt; color: #faf7f2; display: flex; align-items: center; gap: 1.5mm; }
 
-    /* â”€â”€ BODY COLUMNS â”€â”€ */
+    /* —— BODY COLUMNS —— */
     .cv-body {
       display: grid;
       grid-template-columns: 65mm 1fr;
       flex: 1;
+      /* UPDATED: 15mm (1.5cm) Bottom Padding */
+      padding-bottom: 15mm;
     }
 
-    /* Left column */
     .col-left {
       background: #f0ebe1;
       padding: 7mm 6mm 7mm 7mm;
       border-right: 0.5pt solid #ddd5c6;
-      display: flex;
-      flex-direction: column;
-      gap: 6mm;
     }
 
-    /* Right column */
-    .col-right {
-      padding: 7mm 9mm 7mm 7mm;
-      display: flex;
-      flex-direction: column;
-      gap: 6mm;
-    }
+    .col-right { padding: 7mm 9mm 7mm 7mm; }
 
-    /* Section heading shared */
-    .sec-head {
-      font-size: 7pt;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #b85c38;
-      display: flex;
-      align-items: center;
-      gap: 2mm;
-      margin-bottom: 3mm;
-    }
-    .sec-head::after {
-      content: '';
-      flex: 1;
-      height: 0.5pt;
-      background: #b85c38;
-      opacity: 0.35;
-    }
+    .sec-head { font-size: 7pt; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #b85c38; display: flex; align-items: center; gap: 2mm; margin-bottom: 3mm; margin-top: 2mm; }
+    .sec-head::after { content: ''; flex: 1; height: 0.5pt; background: #b85c38; opacity: 0.35; }
 
-    /* Infos personnelles */
-    .info-item {
-      font-size: 7.5pt;
-      color: #555;
-      display: grid;
-      grid-template-columns: 22mm 1fr;
-      gap: 1mm;
-      margin-bottom: 2mm;
-      line-height: 1.45;
-    }
+    .info-item { font-size: 7.5pt; color: #555; display: grid; grid-template-columns: 22mm 1fr; gap: 1mm; margin-bottom: 2mm; }
     .info-label { color: #2c2420; font-weight: 600; }
 
-    /* CompÃ©tences */
-    .comp-item {
-      margin-bottom: 2.5mm;
-    }
+    .comp-item { margin-bottom: 2.5mm; }
     .comp-name { font-size: 8pt; color: #2c2420; margin-bottom: 1mm; display: flex; justify-content: space-between; }
-    .comp-level { font-size: 6.5pt; color: #b85c38; }
     .comp-bar { height: 1.5mm; background: #d8d0c4; border-radius: 1mm; overflow: hidden; }
     .comp-fill { height: 100%; background: #b85c38; border-radius: 1mm; }
 
-    /* Langues */
-    .lang-item { margin-bottom: 2.5mm; }
-    .lang-name { font-size: 8pt; color: #2c2420; font-weight: 600; }
-    .lang-level { font-size: 7pt; color: #888; font-style: italic; }
-    .lang-dots { display: flex; gap: 1mm; margin-top: 1mm; }
-    .dot { width: 3mm; height: 1.5mm; border-radius: 1mm; background: #d8d0c4; }
-    .dot.on { background: #b85c38; }
-
-    /* Centres d'intÃ©rÃªt */
-    .interests { display: flex; flex-wrap: wrap; gap: 1.5mm; }
-    .interest-tag {
-      font-size: 7pt;
-      background: #e4ddd3;
-      color: #555;
-      padding: 1mm 2.5mm;
-      border-radius: 1mm;
-    }
-
-    /* Experience right col */
     .exp-entry { margin-bottom: 5mm; padding-left: 3mm; border-left: 1.5pt solid #b85c38; }
-    .exp-entry:last-child { margin-bottom: 0; }
     .exp-title { font-size: 9.5pt; font-weight: 600; color: #2c2420; }
-    .exp-meta {
-      font-size: 7.5pt;
-      color: #b85c38;
-      font-weight: 600;
-      margin: 0.75mm 0;
-      display: flex;
-      gap: 2mm;
-    }
-    .exp-meta span { color: #888; font-weight: 400; }
+    .exp-meta { font-size: 7.5pt; color: #b85c38; font-weight: 600; margin: 0.75mm 0; }
     .exp-desc { font-size: 8pt; color: #555; line-height: 1.7; }
-    .exp-desc li { list-style: none; padding-left: 3mm; position: relative; margin-bottom: 0.5mm; }
-    .exp-desc li::before { content: 'â€º'; position: absolute; left: 0; color: #b85c38; font-size: 9pt; line-height: 1.4; }
+    .exp-desc li { list-style: none; padding-left: 3mm; position: relative; }
+    .exp-desc li::before { content: '›'; position: absolute; left: 0; color: #b85c38; font-size: 9pt; }
 
-    /* Formation */
     .edu-entry { margin-bottom: 3.5mm; }
     .edu-degree { font-size: 9pt; font-weight: 600; color: #2c2420; }
     .edu-school { font-size: 8pt; color: #888; font-style: italic; }
-    .edu-year { font-size: 7.5pt; color: #b85c38; font-weight: 600; margin-top: 0.5mm; }
 
-    /* Profile summary */
     .profil-text { font-size: 8.5pt; color: #444; line-height: 1.8; font-style: italic; }
 
     @media print {
       body { background: none; padding: 0; }
       .toolbar { display: none; }
-      .cv-paper { box-shadow: none; }
-      @page { size: A4; margin: 0; }
+      .cv-paper { box-shadow: none; width: 210mm; }
+      
+      @page { 
+        size: A4; 
+        /* Strict 1.5cm margin on top and bottom of every page */
+        margin: 1.5cm 0; 
+      }
+      
+      /* Force Colors */
+      .cv-header, .contact-bar, .comp-fill, .sec-head::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
     }
+
     @media (max-width: 240mm) {
       .cv-paper { width: 100%; }
       .cv-body { grid-template-columns: 1fr; }
@@ -276,163 +164,65 @@
 <body>
 
   <div class="toolbar">
-    <div class="toolbar-brand">europin<span>.click</span> â€” Paris Template</div>
-    <button class="btn-dl" onclick="window.print()">â¬‡ Enregistrer en PDF</button>
+    <div class="toolbar-brand">europin<span>.click</span> — Paris Template</div>
+    <button class="btn-dl" onclick="window.print()">⬇ Enregistrer en PDF</button>
   </div>
 
   <div class="cv-paper">
-
-    <!-- Header banner -->
     <header class="cv-header">
-      <div class="photo-box" aria-label="Photo de profil">
+      <div class="photo-box">
         <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="38" r="22" fill="#b85c38" opacity="0.5"/><ellipse cx="50" cy="90" rx="38" ry="28" fill="#b85c38" opacity="0.4"/></svg>
       </div>
       <div class="header-text">
         <div class="cv-name">Camille Dupont</div>
         <div class="cv-role">Responsable Marketing Digital</div>
-        <div class="cv-tagline">Â« Transformer la data en stratÃ©gie, les stratÃ©gies en croissance Â»</div>
+        <div class="cv-tagline">« Transformer la data en stratégie, les stratégies en croissance »</div>
       </div>
     </header>
 
-    <!-- Contact bar -->
     <div class="contact-bar">
-      <span class="contact-bar-item"><span class="icon">âœ‰</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f695979b9f9a9a93d8928386999882b6939b979f9ad89084">[email&#160;protected]</a></span>
-      <span class="contact-bar-item"><span class="icon">âœ†</span> +33 6 12 34 56 78</span>
-      <span class="contact-bar-item"><span class="icon">âŒ‚</span> Paris 9e, France</span>
-      <span class="contact-bar-item"><span class="icon">in</span> linkedin.com/in/camilledupont</span>
+      <span class="contact-bar-item">camille.dupont@example.com</span>
+      <span class="contact-bar-item">+33 6 12 34 56 78</span>
+      <span class="contact-bar-item">Paris 9e, France</span>
     </div>
 
-    <!-- Body -->
     <div class="cv-body">
-
-      <!-- â”€â”€ LEFT â”€â”€ -->
       <aside class="col-left">
-
-        <!-- Profil -->
         <section>
           <div class="sec-head">Profil</div>
-          <p class="profil-text">Responsable Marketing Digital avec 7 ans d'expÃ©rience dans la croissance organique et payante. PassionnÃ©e par l'analyse de donnÃ©es, la gestion de campagnes multi-canaux et la crÃ©ation de contenus Ã  fort impact.</p>
+          <p class="profil-text">Responsable Marketing Digital avec 7 ans d'expérience dans la croissance organique et payante...</p>
         </section>
 
-        <!-- Informations personnelles -->
         <section>
-          <div class="sec-head">Infos personnelles</div>
-          <div class="info-item"><span class="info-label">NÃ©(e) le</span><span>14 juillet 1991</span></div>
-          <div class="info-item"><span class="info-label">NationalitÃ©</span><span>FranÃ§aise</span></div>
-          <div class="info-item"><span class="info-label">Situation</span><span>CÃ©libataire</span></div>
-          <div class="info-item"><span class="info-label">Permis</span><span>B</span></div>
+          <div class="sec-head">Compétences</div>
+          <div class="comp-item"><div class="comp-name"><span>SEO / SEA</span></div><div class="comp-bar"><div class="comp-fill" style="width:95%"></div></div></div>
+          <div class="comp-item"><div class="comp-name"><span>Google Analytics 4</span></div><div class="comp-bar"><div class="comp-fill" style="width:90%"></div></div></div>
         </section>
-
-        <!-- CompÃ©tences -->
-        <section>
-          <div class="sec-head">CompÃ©tences</div>
-          <div class="comp-item"><div class="comp-name"><span>SEO / SEA</span><span class="comp-level">Expert</span></div><div class="comp-bar"><div class="comp-fill" style="width:95%"></div></div></div>
-          <div class="comp-item"><div class="comp-name"><span>Google Analytics 4</span><span class="comp-level">Expert</span></div><div class="comp-bar"><div class="comp-fill" style="width:90%"></div></div></div>
-          <div class="comp-item"><div class="comp-name"><span>Meta Ads / LinkedIn Ads</span><span class="comp-level">AvancÃ©</span></div><div class="comp-bar"><div class="comp-fill" style="width:85%"></div></div></div>
-          <div class="comp-item"><div class="comp-name"><span>HubSpot / Salesforce</span><span class="comp-level">AvancÃ©</span></div><div class="comp-bar"><div class="comp-fill" style="width:80%"></div></div></div>
-          <div class="comp-item"><div class="comp-name"><span>SQL / Looker Studio</span><span class="comp-level">IntermÃ©diaire</span></div><div class="comp-bar"><div class="comp-fill" style="width:65%"></div></div></div>
-          <div class="comp-item"><div class="comp-name"><span>Figma / Canva</span><span class="comp-level">IntermÃ©diaire</span></div><div class="comp-bar"><div class="comp-fill" style="width:70%"></div></div></div>
-        </section>
-
-        <!-- Langues -->
-        <section>
-          <div class="sec-head">Langues</div>
-          <div class="lang-item">
-            <div class="lang-name">FranÃ§ais</div><div class="lang-level">Langue maternelle</div>
-            <div class="lang-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
-          </div>
-          <div class="lang-item">
-            <div class="lang-name">Anglais</div><div class="lang-level">C1 â€” Courant</div>
-            <div class="lang-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
-          </div>
-          <div class="lang-item">
-            <div class="lang-name">Espagnol</div><div class="lang-level">B2 â€” IntermÃ©diaire</div>
-            <div class="lang-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
-          </div>
-        </section>
-
-        <!-- Centres d'intÃ©rÃªt -->
-        <section>
-          <div class="sec-head">Centres d'intÃ©rÃªt</div>
-          <div class="interests">
-            <span class="interest-tag">Photographie</span>
-            <span class="interest-tag">Podcasting</span>
-            <span class="interest-tag">Cyclisme</span>
-            <span class="interest-tag">Gastronomie</span>
-            <span class="interest-tag">Startups</span>
-            <span class="interest-tag">Voyages</span>
-          </div>
-        </section>
-
       </aside>
 
-      <!-- â”€â”€ RIGHT â”€â”€ -->
       <main class="col-right">
-
-        <!-- ExpÃ©rience -->
         <section>
-          <div class="sec-head">ExpÃ©rience professionnelle</div>
-
+          <div class="sec-head">Expérience professionnelle</div>
           <div class="exp-entry">
             <div class="exp-title">Head of Digital Marketing</div>
-            <div class="exp-meta">BlaBlaCar Â· Paris <span>| FÃ©v 2021 â€” Aujourd'hui</span></div>
+            <div class="exp-meta">BlaBlaCar · Paris | Fév 2021 — Aujourd'hui</div>
             <ul class="exp-desc">
-              <li>Direction des stratÃ©gies d'acquisition et de rÃ©tention pour 27 marchÃ©s europÃ©ens (budget : 8 Mâ‚¬/an)</li>
-              <li>Augmentation du trafic organique de 65% en 18 mois grÃ¢ce Ã  une stratÃ©gie de contenu SEO multilingue</li>
-              <li>RÃ©duction du coÃ»t d'acquisition (CAC) de 28% via l'optimisation des campagnes programmatiques</li>
-              <li>Management d'une Ã©quipe de 11 personnes : SEO, Paid, CRM, Content</li>
-            </ul>
-          </div>
-
-          <div class="exp-entry">
-            <div class="exp-title">Responsable SEO & Content</div>
-            <div class="exp-meta">Leboncoin Â· Paris <span>| Sep 2018 â€” Jan 2021</span></div>
-            <ul class="exp-desc">
-              <li>Refonte de l'architecture SEO du site (32M visites/mois), +42% de pages indexÃ©es en 12 mois</li>
-              <li>CrÃ©ation et pilotage d'une Ã©quipe de 5 rÃ©dacteurs freelances et d'un pÃ´le Ã©ditorial interne</li>
-              <li>Lancement d'une newsletter B2B atteignant 45 000 abonnÃ©s en 6 mois</li>
-            </ul>
-          </div>
-
-          <div class="exp-entry">
-            <div class="exp-title">ChargÃ©e de Marketing Digital</div>
-            <div class="exp-meta">ManoMano Â· Bordeaux <span>| Juil 2016 â€” AoÃ»t 2018</span></div>
-            <ul class="exp-desc">
-              <li>Gestion des campagnes Google Ads et Meta pour la France et l'Espagne (budget 1,2 Mâ‚¬)</li>
-              <li>Mise en place du tracking analytics et des tableaux de bord de performance (Google Data Studio)</li>
+              <li>Direction des stratégies d'acquisition et de rétention pour 27 marchés européens.</li>
+              <li>Augmentation du trafic organique de 65% en 18 mois.</li>
             </ul>
           </div>
         </section>
 
-        <!-- Formation -->
         <section>
           <div class="sec-head">Formation</div>
           <div class="edu-entry">
             <div class="edu-degree">Master Marketing Digital & E-Commerce</div>
             <div class="edu-school">ESCP Business School, Paris</div>
-            <div class="edu-year">2014 â€“ 2016 Â· Mention TrÃ¨s Bien</div>
-          </div>
-          <div class="edu-entry">
-            <div class="edu-degree">Licence Sciences de Gestion</div>
-            <div class="edu-school">UniversitÃ© Paris-Dauphine</div>
-            <div class="edu-year">2011 â€“ 2014 Â· Mention Bien</div>
           </div>
         </section>
-
-        <!-- Certifications -->
-        <section>
-          <div class="sec-head">Certifications</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2mm 4mm;">
-            <div style="font-size:7.5pt;color:#555;">Google Analytics 4 Certified <span style="color:#b85c38">2023</span></div>
-            <div style="font-size:7.5pt;color:#555;">HubSpot Marketing Certified <span style="color:#b85c38">2022</span></div>
-            <div style="font-size:7.5pt;color:#555;">Meta Blueprint Professional <span style="color:#b85c38">2022</span></div>
-            <div style="font-size:7.5pt;color:#555;">SEMrush SEO Toolkit Exam <span style="color:#b85c38">2021</span></div>
-          </div>
-        </section>
-
       </main>
     </div>
   </div>
 
-  <p style="margin-top:1.5rem;font-size:0.78rem;color:#888;text-align:center;">
-    Cliquer sur <stron
+</body>
+</html>
