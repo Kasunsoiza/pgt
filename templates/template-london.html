@@ -235,10 +235,11 @@
     .ref-note { font-size: 8pt; color: #999; font-style: italic; text-align: center; margin-top: 3mm; padding-top: 3mm; border-top: 0.5pt solid #eee; }
 
     @media print {
-      body { background: none; padding: 0; }
+      body { background: none; padding: 0; display: block; }
       .toolbar { display: none; }
-      .cv-paper { box-shadow: none; }
-      @page { size: A4; margin: 0; }
+      .cv-paper { box-shadow: none; min-height: auto; width: auto; }
+      @page { size: A4; margin: 3cm 0 3cm 0; }
+      @page:first { margin-top: 0; margin-bottom: 3cm; }
     }
     @media (max-width: 240mm) {
       .cv-paper { width: 100%; padding: 8mm; }
