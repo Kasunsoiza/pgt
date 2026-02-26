@@ -898,14 +898,13 @@ function buildPrintHTML(){
     cvCss,
     '*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}',
     '.cv-berlin,.cv-paris,.cv-london,.cv-ats{width:210mm!important;min-width:210mm!important;max-width:210mm!important;box-shadow:none!important}',
-    /* Berlin: fixed sidebar repeats on every printed page */
-    '.cv-berlin{display:block!important;min-height:0!important;position:relative}',
-    '.cv-berlin .csb{position:fixed;top:0;left:0;width:68mm;min-height:100%;background:var(--ad,#1a1a2e);padding:10mm 7mm;box-sizing:border-box}',
+    '.cv-berlin{display:block!important;min-height:0!important;position:relative;background:linear-gradient(to right,var(--ad,#1a1a2e) 68mm,#fff 68mm)!important}',
+    '.cv-berlin .csb{position:absolute;top:0;left:0;width:68mm;min-height:100%;background:transparent;padding:10mm 7mm;box-sizing:border-box;color:#e8e4dd}',
     '.cv-berlin .cmain{margin-left:68mm;padding:10mm 9mm 10mm 8mm;display:block}',
-    /* Paris: fixed right sidebar repeats on every printed page */
-    '.cv-paris .pb{display:block!important}',
-    '.cv-paris .pa{position:fixed;top:68mm;right:0;width:62mm;padding:8mm 8mm 8mm 6mm;background:#f8f5f0;box-sizing:border-box}',
-    '.cv-paris .pm{display:block;padding:0 8mm 8mm 8mm}',
+    '.cv-paris{display:block!important;min-height:0!important;position:relative;background:linear-gradient(to left,#f8f5f0 62mm,#fff 62mm)!important}',
+    '.cv-paris .pb{display:flex!important;flex-direction:row;align-items:flex-start}',
+    '.cv-paris .pa{position:absolute;top:68mm;right:0;width:62mm;min-height:calc(100% - 68mm);padding:8mm 8mm 8mm 6mm;background:transparent;box-sizing:border-box;border-left:1px solid #e8e3da}',
+    '.cv-paris .pm{flex:1;padding:8mm 8mm 8mm 12mm;box-sizing:border-box}',
     /* Break rules */
     '.cv-berlin .ee,.cv-berlin .edue,.cv-paris .xe,.cv-paris .edue,.cv-london .xe,.cv-london .edue,.cv-ats .aee,.cv-ats .aedu{break-inside:avoid;page-break-inside:avoid}',
     '.cv-berlin .sh,.cv-paris .st,.cv-london .st,.cv-ats .ast{break-after:avoid;page-break-after:avoid}',
